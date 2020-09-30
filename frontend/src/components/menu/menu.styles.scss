@@ -1,0 +1,12 @@
+.side-menu {
+  z-index: 10;
+  border-top: 2px solid black;
+  ion-list {
+    ion-label {
+      padding-left: 10px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+.side-menu {
+  position: fixed;
+  width: 400px;
+  height: 100%;
+  // background: red;
+  right: 0;
+  transition: right 0.5s ease;
+  @media (max-width: 800px) {
+    width: 100%;
+  }
+}
+
+ion-header {
+  ion-icon {
+    color: #101010;
+  }
+}

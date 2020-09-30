@@ -1,0 +1,10 @@
+#loading {
+  animation: round-rotate 1s ease infinite;
+  font-size: 5rem;
+}
+
+@keyframes round-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
