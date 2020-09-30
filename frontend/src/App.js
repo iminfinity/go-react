@@ -35,6 +35,9 @@ import Menu from "./components/menu/menu.component";
 import Iminfinity from "./components/iminfinity/iminfinity.component";
 import Loading from "./components/loading/loading.component";
 
+import { ReactComponent as GoLogo } from "../src/assets/go.svg";
+import { ReactComponent as ReactLogo } from "../src/assets/react-logo.svg";
+
 const Home = React.lazy(() => import("./pages/home/home.component"));
 const Get = React.lazy(() => import("./pages/get/get.component"));
 const Post = React.lazy(() => import("./pages/post/post.component"));
@@ -97,7 +100,10 @@ function App() {
     <IonApp>
       <IonHeader>
         <IonToolbar>
-          <IonTitle onClick={() => setPage("home")}>GO</IonTitle>
+          <IonTitle onClick={() => setPage("home")}>
+            <GoLogo />
+            <ReactLogo />
+          </IonTitle>
           <IonButtons slot="primary">
             <IonButton
               color="dark"

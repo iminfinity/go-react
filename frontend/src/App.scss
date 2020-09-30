@@ -14,4 +14,27 @@ ion-header {
   ion-icon {
     color: #101010;
   }
+
+  ion-toolbar {
+    ion-title {
+      svg {
+        width: 60px;
+        &:last-child {
+          width: 40px;
+          margin-left: 3px;
+        }
+      }
+    }
+  }
+}
+
+#react-logo {
+  animation: rotate 10s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
 }
