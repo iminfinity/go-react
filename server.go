@@ -12,8 +12,8 @@ func check(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	port := os.Getenv("PORT")
-	// http.Handle("/", http.FileServer(http.Dir("./frontend/build/")))
-	http.HandleFunc("/", check)
+	http.Handle("/", http.FileServer(http.Dir("./frontend/build/")))
+	http.HandleFunc("/check", check)
 	fmt.Println("Server running at port " + port)
 	http.ListenAndServe(":"+port, nil)
 }
