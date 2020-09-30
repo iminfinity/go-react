@@ -21,7 +21,7 @@ const Menu = ({ setPageFromMenu }) => {
       </IonItem>
       <IonItem>
         <IonIcon icon={cutOutline} />
-        <IonLabel onClick={() => setPageFromMenu("Put")}>Put</IonLabel>
+        <IonLabel onClick={() => setPageFromMenu("put")}>Put</IonLabel>
       </IonItem>
       <IonItem>
         <IonIcon icon={trash} />

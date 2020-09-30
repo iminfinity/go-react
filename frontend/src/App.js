@@ -35,11 +35,11 @@ import Menu from "./components/menu/menu.component";
 import Iminfinity from "./components/iminfinity/iminfinity.component";
 import Loading from "./components/loading/loading.component";
 
+const Home = React.lazy(() => import("./pages/home/home.component"));
 const Get = React.lazy(() => import("./pages/get/get.component"));
 const Post = React.lazy(() => import("./pages/post/post.component"));
 const Delete = React.lazy(() => import("./pages/delete/delete.component"));
 const Put = React.lazy(() => import("./pages/put/put.component"));
-const Home = React.lazy(() => import("./pages/home/home.component"));
 
 function App() {
   const [page, setPage] = useState("home");
