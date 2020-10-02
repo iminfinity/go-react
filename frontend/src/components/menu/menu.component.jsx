@@ -8,24 +8,28 @@ import {
   cutOutline,
   trash,
 } from "ionicons/icons";
-const Menu = ({ setPageFromMenu }) => {
+const Menu = ({ setPageFromMenu, hideMenu }) => {
+  const setPageAndHideMenu = (page) => {
+    setPageFromMenu(page);
+    hideMenu();
+  };
   return (
     <IonList>
       <IonItem>
         <IonIcon icon={bookOutline} />
-        <IonLabel onClick={() => setPageFromMenu("get")}>Get</IonLabel>
+        <IonLabel onClick={() => setPageAndHideMenu("get")}>Get</IonLabel>
       </IonItem>
       <IonItem>
         <IonIcon icon={addCircleOutline} />
-        <IonLabel onClick={() => setPageFromMenu("post")}>Post</IonLabel>
+        <IonLabel onClick={() => setPageAndHideMenu("post")}>Post</IonLabel>
       </IonItem>
       <IonItem>
         <IonIcon icon={cutOutline} />
-        <IonLabel onClick={() => setPageFromMenu("put")}>Put</IonLabel>
+        <IonLabel onClick={() => setPageAndHideMenu("put")}>Put</IonLabel>
       </IonItem>
       <IonItem>
         <IonIcon icon={trash} />
-        <IonLabel onClick={() => setPageFromMenu("delete")}>Delete</IonLabel>
+        <IonLabel onClick={() => setPageAndHideMenu("delete")}>Delete</IonLabel>
       </IonItem>
     </IonList>
   );

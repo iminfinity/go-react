@@ -121,7 +121,7 @@ function App() {
       </IonHeader>
       <IonContent>
         <div className="side-menu" style={{ right: right }}>
-          <Menu setPageFromMenu={setPageFromMenu} />
+          <Menu setPageFromMenu={setPageFromMenu} hideMenu={openSideMenu} />
           <Iminfinity />
         </div>
         <div>{renderPage(page)}</div>
