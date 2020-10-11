@@ -4,16 +4,16 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 	"time"
 
-	// "os"
 	"github.com/gorilla/mux"
 	"github.com/iminfinity/go-react/backend"
 )
 
 func main() {
-	// port := os.Getenv("PORT")
-	port := "8000"
+	port := os.Getenv("PORT") // for production
+	// port := "8000" // for development
 
 	//Init Router
 	r := mux.NewRouter()
