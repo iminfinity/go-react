@@ -22,16 +22,16 @@ type Author struct {
 	LastName  string `json: "lastname"`
 }
 
-// Init posts var as a slice Post struct
+// Posts slice
 var Posts []Post
 
-// Get all Post
+// GetPosts - get all posts
 func GetPosts(w http.ResponseWriter, r *http.Request) {
 	w.Header().Add("content-type", "application/json")
 	json.NewEncoder(w).Encode(Posts)
 }
 
-// Get single POst
+// GetPost - get a single post
 func GetPost(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r) // Get params
 
@@ -45,7 +45,7 @@ func GetPost(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(&Post{})
 }
 
-// create a new Post
+// CreatePost - create new post
 func CreatePost(w http.ResponseWriter, r *http.Request) {
 	w.Header().Add("content-type", "application/json")
 	var newPost Post
@@ -55,7 +55,7 @@ func CreatePost(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(Posts)
 }
 
-// Update a Post
+// UpdatePost - update a post
 func UpdatePost(w http.ResponseWriter, r *http.Request) {
 	w.Header().Add("content-type", "application/json")
 	params := mux.Vars(r)
@@ -74,7 +74,7 @@ func UpdatePost(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(Posts)
 }
 
-// delete a Post
+// DeletePost  - delete a post
 func DeletePost(w http.ResponseWriter, r *http.Request) {
 	w.Header().Add("content-type", "application/json")
 	params := mux.Vars(r)

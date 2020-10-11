@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net/http"
-	"os"
-	"strconv"
+	"time"
 
 	// "os"
 	"github.com/gorilla/mux"
@@ -12,12 +12,9 @@ import (
 )
 
 func main() {
-	port := os.Getenv("PORT")
-	// port := "8000"
-	http.HandleFunc("/port", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, port)
-	})
-	http.Handle("/", http.FileServer(http.Dir("./frontend/build/")))
+	// port := os.Getenv("PORT")
+	port := "8000"
+
 	//Init Router
 	r := mux.NewRouter()
 
@@ -34,9 +31,16 @@ func main() {
 
 	fmt.Println("Server running at port " + port)
 
-	// go http.ListenAndServe(":8080", r)
-	newPort, _ := strconv.Atoi(port)
-	newPort += 80
-	go http.ListenAndServe(":"+strconv.Itoa(newPort), r)
-	http.ListenAndServe(":"+port, nil)
+	spa := backend.SpaHandler{StaticPath: "frontend/build", IndexPath: "index.html"}
+	r.PathPrefix("/").Handler(spa)
+
+	srv := &http.Server{
+		Handler: r,
+		Addr:    ":" + port,
+		// Good practice: enforce timeouts for servers you create!
+		WriteTimeout: 15 * time.Second,
+		ReadTimeout:  15 * time.Second,
+	}
+
+	log.Fatal(srv.ListenAndServe())
 }
