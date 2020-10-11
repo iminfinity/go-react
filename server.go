@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"strconv"
 
 	// "os"
 	"github.com/gorilla/mux"
@@ -13,8 +14,10 @@ import (
 func main() {
 	port := os.Getenv("PORT")
 	// port := "8000"
+	http.HandleFunc("/port", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, port)
+	})
 	http.Handle("/", http.FileServer(http.Dir("./frontend/build/")))
-
 	//Init Router
 	r := mux.NewRouter()
 
@@ -31,6 +34,9 @@ func main() {
 
 	fmt.Println("Server running at port " + port)
 
-	go http.ListenAndServe(":8080", r)
+	// go http.ListenAndServe(":8080", r)
+	newPort, _ := strconv.Atoi(port)
+	newPort += 80
+	go http.ListenAndServe(":"+strconv.Itoa(newPort), r)
 	http.ListenAndServe(":"+port, nil)
 }
