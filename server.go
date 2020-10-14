@@ -38,8 +38,8 @@ func main() {
 		fmt.Println(author.FirstName)
 	}
 
-	// port := os.Getenv("PORT") // for production
-	port := "8000" // for development
+	port := os.Getenv("PORT") // for production
+	// port := "8000" // for development
 
 	//Init Router
 	r := mux.NewRouter()
