@@ -1,7 +1,9 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
@@ -12,15 +14,35 @@ import (
 )
 
 func main() {
-	port := os.Getenv("PORT") // for production
-	// port := "8000" // for development
+
+	// Open our posts.json
+	jsonFile, err := os.Open("posts.json")
+	if err != nil {
+		fmt.Println(err)
+	}
+	defer jsonFile.Close()
+	fmt.Println("Successfully Opened posts.json")
+
+	// read our opened jsonFile as a byte array.
+	byteValue, _ := ioutil.ReadAll(jsonFile)
+
+	// we unmarshal our byteArray which contains our
+	// jsonFile's content into 'posts' which we defined above
+	json.Unmarshal(byteValue, &backend.PostsFromJson)
+
+	fmt.Println(len(backend.PostsFromJson.Posts))
+	for _, item := range backend.PostsFromJson.Posts {
+		var author backend.Author
+		author = *item.Author
+		fmt.Println(item.Title)
+		fmt.Println(author.FirstName)
+	}
+
+	// port := os.Getenv("PORT") // for production
+	port := "8000" // for development
 
 	//Init Router
 	r := mux.NewRouter()
-
-	// Mock data
-	backend.Posts = append(backend.Posts, backend.Post{Id: "1", Title: "Book one", Message: "Message 1", Author: &backend.Author{FirstName: "John", LastName: "Doe"}})
-	backend.Posts = append(backend.Posts, backend.Post{Id: "2", Title: "Book two", Message: "Message 2", Author: &backend.Author{FirstName: "John", LastName: "Doe"}})
 
 	// Router Handlers / Endpoints
 	r.HandleFunc("/posts", backend.GetPosts).Methods("GET")

@@ -23,12 +23,20 @@ type Author struct {
 }
 
 // Posts slice
-var Posts []Post
+// var Posts []Post
+
+// Posts slice
+type Posts struct {
+	Posts []Post `json: "posts"`
+}
+
+// PostsFromJson posts
+var PostsFromJson Posts
 
 // GetPosts - get all posts
 func GetPosts(w http.ResponseWriter, r *http.Request) {
 	w.Header().Add("content-type", "application/json")
-	json.NewEncoder(w).Encode(Posts)
+	json.NewEncoder(w).Encode(PostsFromJson.Posts)
 }
 
 // GetPost - get a single post
@@ -36,7 +44,7 @@ func GetPost(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r) // Get params
 
 	// Loop through posts find with id
-	for _, item := range Posts {
+	for _, item := range PostsFromJson.Posts {
 		if item.Id == params["id"] {
 			json.NewEncoder(w).Encode(item)
 			return
@@ -50,9 +58,9 @@ func CreatePost(w http.ResponseWriter, r *http.Request) {
 	w.Header().Add("content-type", "application/json")
 	var newPost Post
 	_ = json.NewDecoder(r.Body).Decode(&newPost)
-	newPost.Id = strconv.Itoa(len(Posts) + 1)
-	Posts = append(Posts, newPost)
-	json.NewEncoder(w).Encode(Posts)
+	newPost.Id = strconv.Itoa(len(PostsFromJson.Posts) + 1)
+	PostsFromJson.Posts = append(PostsFromJson.Posts, newPost)
+	json.NewEncoder(w).Encode(PostsFromJson.Posts)
 }
 
 // UpdatePost - update a post
@@ -60,18 +68,18 @@ func UpdatePost(w http.ResponseWriter, r *http.Request) {
 	w.Header().Add("content-type", "application/json")
 	params := mux.Vars(r)
 
-	for index, item := range Posts {
+	for index, item := range PostsFromJson.Posts {
 		if item.Id == params["id"] {
-			Posts = append(Posts[:index], Posts[index+1:]...)
+			PostsFromJson.Posts = append(PostsFromJson.Posts[:index], PostsFromJson.Posts[index+1:]...)
 			var post Post
 			_ = json.NewDecoder(r.Body).Decode(&post)
 			post.Id = params["id "]
-			Posts = append(Posts, post)
-			json.NewEncoder(w).Encode(Posts)
+			PostsFromJson.Posts = append(PostsFromJson.Posts, post)
+			json.NewEncoder(w).Encode(PostsFromJson.Posts)
 			return
 		}
 	}
-	json.NewEncoder(w).Encode(Posts)
+	json.NewEncoder(w).Encode(PostsFromJson.Posts)
 }
 
 // DeletePost  - delete a post
@@ -79,11 +87,11 @@ func DeletePost(w http.ResponseWriter, r *http.Request) {
 	w.Header().Add("content-type", "application/json")
 	params := mux.Vars(r)
 
-	for index, item := range Posts {
+	for index, item := range PostsFromJson.Posts {
 		if item.Id == params["id"] {
-			Posts = append(Posts[:index], Posts[index+1:]...)
+			PostsFromJson.Posts = append(PostsFromJson.Posts[:index], PostsFromJson.Posts[index+1:]...)
 			break
 		}
 	}
-	json.NewEncoder(w).Encode(Posts)
+	json.NewEncoder(w).Encode(PostsFromJson.Posts)
 }

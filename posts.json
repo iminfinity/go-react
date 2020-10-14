@@ -1,0 +1,22 @@
+{
+    "posts":  [
+        {
+            "id" : "1",
+            "title" : "Post one",
+            "message" : "Message 1",
+            "author" : {
+                "firstname": "John",
+                "lastname": "Doe"
+            }
+        },
+        {
+            "id" : "2",
+            "title" : "Post two",
+            "message" : "Message 2",
+            "author" : {
+                "firstname": "Jane",
+                "lastname": "Doe"
+            }   
+        }
+    ]
+}
