@@ -5,16 +5,33 @@ import axios from "axios";
 
 
 const Home = () => {
-  const [items, setItems] = useState("items");
+  const [items, setItems] = useState([]);
   useEffect(() => {
-    axios.get("https://go-react-rest.herokuapp/posts/1").then(response => response.data).then(data => console.log(data)).catch(error => console.log(error))
+    axios
+    .get("https://go-react-rest.herokuapp.com/posts") //.get("http://localhost:8000/posts") 
+    .then(response => response.data)
+    .then(data => {
+      setItems(data);
+      console.log(data);
+    })
+    .catch(error => console.log(error))
   }, [])
   return (
     <div>
       <h1>Home</h1>
-      <p>
-        {items}
-      </p>
+        {
+          items.map(item => {
+          return (
+          <p  key={item.Id}>
+            <h1>
+              {item.Author["FirstName"]} 
+              {item.Author["LastName"]}
+            </h1>
+            <em>{item.Message}</em>
+          </p>
+          )
+          })
+        }
     </div>
   );
 };
