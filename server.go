@@ -21,7 +21,6 @@ func main() {
 		fmt.Println(err)
 	}
 	defer jsonFile.Close()
-	fmt.Println("Successfully Opened posts.json")
 
 	// read our opened jsonFile as a byte array.
 	byteValue, _ := ioutil.ReadAll(jsonFile)
@@ -30,17 +29,10 @@ func main() {
 	// jsonFile's content into 'posts' which we defined above
 	json.Unmarshal(byteValue, &backend.PostsFromJson)
 
-	fmt.Println(len(backend.PostsFromJson.Posts))
-	for _, item := range backend.PostsFromJson.Posts {
-		var author backend.Author
-		author = *item.Author
-		fmt.Println(item.Title)
-		fmt.Println(author.FirstName)
-	}
-
 	port := os.Getenv("PORT") // for production
-	// port := "8000" // for development
-
+	if port == "" {
+		port = "8000" // for development
+	}
 	//Init Router
 	r := mux.NewRouter()
 

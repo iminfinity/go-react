@@ -17,6 +17,15 @@
                 "firstname": "Jane",
                 "lastname": "Doe"
             }   
+        },
+        {
+            "id" : "3",
+            "title" : "Post three",
+            "message" : "Message 3",
+            "author" : {
+                "firstname": "Janet",
+                "lastname": "Doel"
+            }   
         }
     ]
 }

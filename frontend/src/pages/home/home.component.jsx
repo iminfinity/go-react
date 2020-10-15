@@ -6,9 +6,12 @@ import axios from "axios";
 
 const Home = () => {
   const [items, setItems] = useState([]);
+  // const [url, setUrl] = useState("http://localhost:8000/posts");
+  const [url, setUrl] = useState("https://go-react-rest.herokuapp.com/posts");
+  
   useEffect(() => {
     axios
-    .get("https://go-react-rest.herokuapp.com/posts") //.get("http://localhost:8000/posts") 
+    .get(url) 
     .then(response => response.data)
     .then(data => {
       setItems(data);
