@@ -48,6 +48,10 @@ function App() {
   const [page, setPage] = useState("home");
   const [menuOpen, setMenuOpen] = useState(true);
   const [right, setRight] = useState("-120%");
+
+  // const [url, setUrl] = useState("http://localhost:8000/posts");
+  const [url, setUrl] = useState("https://go-react-rest.herokuapp.com/posts");
+
   const openSideMenu = () => {
     setMenuOpen((prev) => !prev);
     if (menuOpen) {
@@ -66,31 +70,31 @@ function App() {
       case "get":
         return (
           <Suspense fallback={Loading}>
-            <Get />
+            <Get url={url} />
           </Suspense>
         );
       case "post":
         return (
           <Suspense fallback={Loading}>
-            <Post />
+            <Post url={url} />
           </Suspense>
         );
       case "delete":
         return (
           <Suspense fallback={Loading}>
-            <Delete />
+            <Delete url={url} />
           </Suspense>
         );
       case "put":
         return (
           <Suspense fallback={Loading}>
-            <Put />
+            <Put url={url} />
           </Suspense>
         );
       default:
         return (
           <Suspense fallback={Loading}>
-            <Home />
+            <Home url={url} />
           </Suspense>
         );
     }

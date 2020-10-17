@@ -4,10 +4,8 @@ import { IonButton } from "@ionic/react";
 import axios from "axios";
 
 
-const Home = () => {
+const Home = ({url}) => {
   const [items, setItems] = useState([]);
-  // const [url, setUrl] = useState("http://localhost:8000/posts");
-  const [url, setUrl] = useState("https://go-react-rest.herokuapp.com/posts");
   
   useEffect(() => {
     axios

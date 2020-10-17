@@ -2,10 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./post.styles.scss";
 
 import axios from "axios";
-const Post = () => {
-  // const [url, setUrl] = useState("http://localhost:8000/posts");
-  const [url, setUrl] = useState("https://go-react-rest.herokuapp.com/posts");
-
+const Post = ({url}) => {
   const handlePost = (event) => {
     event.preventDefault();
     axios
