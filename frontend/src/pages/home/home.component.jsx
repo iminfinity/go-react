@@ -18,8 +18,7 @@ const Home = ({url}) => {
     .catch(error => console.log(error))
   }, [])
   return (
-    <div>
-      <h1>Home</h1>
+    <div className="page">
         {
           items.map(item => {
           return (

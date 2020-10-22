@@ -6,16 +6,13 @@ import axios from "axios";
 import { IonButton } from "@ionic/react";
 
 const Delete = ({url}) => {
+  const [id, setId] = useState("")
   const handleDelete = (event) => {
-
-    axios.delete(url+"/1").then(alert("Deleted")).catch(error => console.log(error))
+    axios.delete(url + "/" + id).then(alert("Deleted")).catch(error => console.log(error))
   }
   return (
-    <div className="">
-      <h1>Delete</h1>
-      <p>
-        Delete post with id 1
-      </p>
+    <div className="page">
+      <input type="text" value={id} onChange={(event)=> setId(event.target.value)} required/>
       <IonButton color="dark" onClick={handleDelete}>
         Delete
       </IonButton>

@@ -108,6 +108,9 @@ function App() {
             <GoLogo />
             <ReactLogo />
           </IonTitle>
+          <IonButtons slot="secondary">
+            <IonButton>{page.toUpperCase()}</IonButton>
+          </IonButtons>
           <IonButtons slot="primary">
             <IonButton
               color="dark"

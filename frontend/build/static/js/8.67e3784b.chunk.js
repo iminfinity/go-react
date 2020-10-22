@@ -1,2 +1,0 @@
-(this["webpackJsonpreact-news"]=this["webpackJsonpreact-news"]||[]).push([[8],{151:function(e,t,n){},162:function(e,t,n){"use strict";n.r(t);var a=n(121),l=n.n(a),c=n(0),r=n.n(c),o=(n(151),n(4));t.default=function(e){var t=e.url;return r.a.createElement("div",{className:""},r.a.createElement("h1",null,"Delete"),r.a.createElement("p",null,"Delete post with id 1"),r.a.createElement(o.b,{color:"dark",onClick:function(e){l.a.delete(t+"/1").then(alert("Deleted")).catch((function(e){return console.log(e)}))}},"Delete"))}}}]);
-//# sourceMappingURL=8.67e3784b.chunk.js.map

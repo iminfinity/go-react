@@ -18,9 +18,12 @@ const Post = ({url}) => {
   }
 
   return (
-    <div>
-      <h1>Post</h1>
+    <div className="page">
       <form onSubmit={handlePost}>
+        <input type="text" placeholder="First Name" />
+        <input type="text" placeholder="Last Name" />
+        <input type="text" placeholder="Title" />
+        <textarea placeholder="Message" />
         <input type="submit" value="Post" />
       </form>
     </div>

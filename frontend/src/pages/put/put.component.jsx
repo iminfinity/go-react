@@ -3,8 +3,7 @@ import "./put.styles.scss";
 
 const Put = () => {
   return (
-    <div>
-      <h1>Put</h1>
+    <div className="page">
     </div>
   );
 };
