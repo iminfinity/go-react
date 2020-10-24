@@ -13,7 +13,7 @@ const Delete = ({url}) => {
     axios
     .delete(url + "/" + id)
     .then(response => response.data)
-    .then(data => console.log(data))
+    .then(data => setItem(data))
     .catch(error => console.log(error))
   }
   return (
@@ -27,16 +27,17 @@ const Delete = ({url}) => {
       </form>
       {
         item === null ? null : (
-          item.Id !== " " ?
+          item.Id !== "" ?
             (
             <div className="post" >
             <h1>
               Deleted
             </h1>
-            <h1>
+            <h2>
             {item.Author["FirstName"]}
+            {" "}
             {item.Author["LastName"]}
-            </h1>
+            </h2>
               <p>{item.Message}</p>
           </div>
             ) : (
