@@ -1,0 +1,13 @@
+.delete-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+  form {
+    display: flex;
+    input {
+      margin: 2px;
+    }
+  }
+}

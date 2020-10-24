@@ -96,12 +96,13 @@ func UpdatePost(w http.ResponseWriter, r *http.Request) {
 func DeletePost(w http.ResponseWriter, r *http.Request) {
 	w.Header().Add("content-type", "application/json")
 	params := mux.Vars(r)
-
+	var deletedPost Post
 	for index, item := range PostsFromJson.Posts {
 		if item.Id == params["id"] {
+			deletedPost = item
 			PostsFromJson.Posts = append(PostsFromJson.Posts[:index], PostsFromJson.Posts[index+1:]...)
 			break
 		}
 	}
-	json.NewEncoder(w).Encode(PostsFromJson.Posts)
+	json.NewEncoder(w).Encode(deletedPost)
 }
