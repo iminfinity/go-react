@@ -49,10 +49,8 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(true);
   const [right, setRight] = useState("-120%");
 
-  // const [url, setUrl] = useState("http://localhost:8000/posts");
-  const [url, setUrl] = useState(
-    "https://cors-anywhere.herokuapp.com/https://go-react-rest.herokuapp.com/posts"
-  );
+  const [url, setUrl] = useState("https://go-react-rest.herokuapp.com/posts");
+  // "https://cors-anywhere.herokuapp.com/https://go-react-rest.herokuapp.com/posts"
 
   const openSideMenu = () => {
     setMenuOpen((prev) => !prev);
