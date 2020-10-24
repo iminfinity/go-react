@@ -58,7 +58,7 @@ func CreatePost(w http.ResponseWriter, r *http.Request) {
 	w.Header().Add("content-type", "application/json")
 	var newPost Post
 	_ = json.NewDecoder(r.Body).Decode(&newPost)
-	newPost.Id = strconv.Itoa(len(PostsFromJson.Posts) + 1)
+	newPost.Id = strconv.Itoa(len(PostsFromJson.Posts) * 2)
 	PostsFromJson.Posts = append(PostsFromJson.Posts, newPost)
 	json.NewEncoder(w).Encode(PostsFromJson.Posts)
 }
