@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
+import "./home.styles.scss";
+
 import { IonButton } from "@ionic/react";
+
 
 import axios from "axios";
 
@@ -18,20 +21,22 @@ const Home = ({url}) => {
     .catch(error => console.log(error))
   }, [])
   return (
-    <div className="page">
-        {
-          items.map(item => {
-          return (
-          <p  key={item.Id}>
-            <h1>
-              {item.Author["FirstName"]} 
-              {item.Author["LastName"]}
-            </h1>
-            <em>{item.Message}</em>
-          </p>
-          )
-          })
-        }
+    <div className="home-page">
+      {
+        items.map(item => {
+        return (
+        <div className="post"  key={item.Id} >
+          <h1>
+            {item.Author["FirstName"]}
+            {" "} 
+            {item.Author["LastName"]}
+          </h1>
+          {/* <h3>{item.Title}</h3> */}
+          <p>{item.Message}</p>
+        </div>
+        )
+        })
+      }
     </div>
   );
 };

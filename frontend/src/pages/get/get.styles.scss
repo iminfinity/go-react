@@ -1,0 +1,11 @@
+.get-page {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  align-items: center;
+  form {
+    display: flex;
+    column-gap: 10px;
+    margin-bottom: 15px;
+  }
+}

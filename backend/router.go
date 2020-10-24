@@ -50,7 +50,17 @@ func GetPost(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	}
-	json.NewEncoder(w).Encode(&Post{})
+	errorPost := Post{
+		Id:      " ",
+		Title:   " ",
+		Message: "ID not found",
+		Author: &Author{
+			FirstName: "Error",
+			LastName:  " ",
+		},
+	}
+
+	json.NewEncoder(w).Encode(errorPost)
 }
 
 // CreatePost - create new post
