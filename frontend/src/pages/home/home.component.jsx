@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./home.styles.scss";
 
 import { IonButton } from "@ionic/react";
-
-
 import axios from "axios";
 
 
@@ -27,12 +25,15 @@ const Home = ({url}) => {
         return (
         <div className="post"  key={item.Id} >
           <h1>
+          <span className="id">{item.Id}</span>
+            {" "} 
             {item.Author["FirstName"]}
             {" "} 
             {item.Author["LastName"]}
           </h1>
           {/* <h3>{item.Title}</h3> */}
-          <p>{item.Message}</p>
+            
+          <p> {item.Message}</p>
         </div>
         )
         })

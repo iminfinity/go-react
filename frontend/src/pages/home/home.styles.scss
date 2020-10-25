@@ -14,6 +14,12 @@
     text-transform: uppercase;
     font-family: "Courier New", Courier, monospace;
     font-weight: bold;
+    .id {
+      writing-mode: vertical-lr;
+      text-orientation: sideways;
+      font-family: "Courier New", Courier, monospace;
+      font-weight: 100;
+    }
   }
   p {
     font-size: 1.5rem;
